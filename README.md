@@ -1,4 +1,5 @@
 # google-internship-experience-bright-network
+This code is modified from the Google Bright Network sample code for the Internship Experience UK: Technology
 Youtube Challenge - Java
 The Java Youtube Challenge uses Java 11, Junit 5.4 and Maven.
 
