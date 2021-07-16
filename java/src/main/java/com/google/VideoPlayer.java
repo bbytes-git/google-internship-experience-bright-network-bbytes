@@ -1,5 +1,5 @@
 package com.google;
-// T.B.Biokoro
+// Tonia B. Biokoro
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -10,6 +10,7 @@ public class VideoPlayer {
   private final VideoLibrary videoLibrary;
   private boolean paused = false;
 
+
   public VideoPlayer() {
     this.videoLibrary = new VideoLibrary();
   }
@@ -19,7 +20,7 @@ public class VideoPlayer {
   }
 
   public void showAllVideos() {
-    System.out.println("Here are the availble videos");
+    System.out.println("Below is a list of all available videos");
    List<Video> videos = videoLibrary.getVideos();
     // [1] For-each loop in Javahttps://www.geeksforgeeks.org/for-each-loop-in-java/
    for (Video video : videos){
@@ -32,7 +33,7 @@ public class VideoPlayer {
 
     Video video = videoLibrary.getVideo(videoId);
     if (video == null) {
-      System.out.println("Video cannot start: video does not exist");
+      System.out.println("This video does not exist");
     }else{
       endVideoPlaying();
       runTheVideo(video);
@@ -40,34 +41,45 @@ public class VideoPlayer {
     }
 
   }
-// [3] https://github.com/Lengjunyi/internship-experience-uk-google-work-sample
-  private void runTheVideo(Video video) {
-    assert video != null;
-    String videoId = video.getVideoId();
-    if(flagVid.containsKey(videoId)) {
-      System.out.printf("Cannot play video: video is flags (reason: %s)%n",
-              flagVid.get(videoId));
-      return;
-    }
-    System.out.printf("Playing video: %s%n", video.getTitle());
-    playingVideo = video;
-    paused = false;
 
+  private void runTheVideo(Video video) {
+    if (video != null) {
+      System.out.println(video.getTitle());
+    }
+
+  }
+
+
+  private void runTheVideo(Video video, String videoId) {
+    if (video != null) {
+      videoId = video.getVideoId();
+    }
+    System.out.println(video.getVideoId());
+    
   }
 
 
   private void endVideoPlaying() {
 
-    if (playingVideo != null) {
+    if (playingVideo == null) {
+      System.out.printf(" ");
+
+    }else {
       System.out.printf("Ending video: %s%n", playingVideo.getTitle());
+
     }
-    playingVideo = null;
+
+
   }
   Map<String, String> flagVid = new HashMap<>();
 
 
   public void stopVideo() {
-    System.out.println("stopVideo needs implementation");
+
+    if (playingVideo != null){
+
+    }
+    System.out.println("Must implement endVideoPlaying");
   }
 
   public void playRandomVideo() {
@@ -75,14 +87,21 @@ public class VideoPlayer {
   }
 
   public void pauseVideo() {
+    if (playingVideo != null) {
+
+    }
     System.out.println("pauseVideo needs implementation");
   }
 
   public void continueVideo() {
     System.out.println("continueVideo needs implementation");
   }
-
+// me
   public void showPlaying() {
+    if (playingVideo != null) {
+
+      System.out.println("Video playing is: " + playingVideo.getVideoId());
+    }
     System.out.println("showPlaying needs implementation");
   }
 
@@ -127,23 +146,9 @@ public class VideoPlayer {
   }
 
   public void flagVideo(String videoId, String reason) {
-
-    Video video = videoLibrary.getVideo(videoId);
-    if (video != null) {
-      if (playingVideo != null && playingVideo.getVideoId().equals(videoId)) {
-        endVideoPlaying();
-      }
-      if (flagVid.containsKey(videoId)) {
-        System.out.println("Cannot flag video: Video is already flagged");
-      } else {
-        flagVid.put(videoId, reason);
-        System.out.printf("Successfully flagged video: %s (reason: %s)%n",
-                video.getTitle(), reason);
-      }
-    } else {
-      System.out.println("Cannot flag video: Video does not exist");
-    }
+    System.out.println("flagVideo needs implementation");
   }
+
 
   public void allowVideo(String videoId) {
     System.out.println("allowVideo needs implementation");
